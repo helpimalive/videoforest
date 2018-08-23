@@ -1,0 +1,12 @@
+{
+  "actions_path": "actions",
+  "child_to_parent_name": "closest genre match better than",
+  "forest_name": "video forest",
+  "node_name": "video",
+  "tree_name": "genre",
+  "version": {
+    "major": "0",
+    "minor": "0",
+    "patch": "0"
+  }
+}

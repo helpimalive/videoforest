@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+# Dirty script to download titles from IMDB to make a videos
+# file. This writes down "Title (Year)" for all movies that have at
+# least 500 ratings.
+
+set -e
+
+mkdir -p .imdb
+cd .imdb
+curl -LO https://datasets.imdbws.com/title.basics.tsv.gz
+curl -LO https://datasets.imdbws.com/title.ratings.tsv.gz
+gunzip title.basics.tsv.gz
+gunzip title.ratings.tsv.gz
+join -t '	' title.basics.tsv title.ratings.tsv | \
+  awk -F '	' '(NR > 1) && ($11 > 500) {print $3 " (" $6")"}' \
+  > ../videos
